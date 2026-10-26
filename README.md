@@ -2,7 +2,7 @@
 
 A micro-learning game built from *The Handbook Series* — thirteen handbooks for starting an adult life, broken into short lessons with questions, XP, levels, streaks and badges.
 
-**13 handbooks · 76 lessons · 228 questions · ~2–3 minutes each**
+**16 handbooks · 94 lessons · 282 questions · ~2–3 minutes each**
 
 No build step. No dependencies. No accounts. Pure HTML, CSS and JavaScript — push it to GitHub and it runs.
 
@@ -64,14 +64,17 @@ Progress saves to the browser's local storage. The **You** tab has a backup code
 **Part Four — Together**
 `Day Off` · `Us`
 
-**Part Five — Protection**
+**Part Five — The World**
+`People` · `Thinking` · `The Deal`
+
+**Part Six — Protection**
 `Papers` · `Digital` · `Emergency`
 
 ---
 
 ## Editing the content
 
-All lesson content lives in `js/data/part1.js` through `part5.js`. Each handbook is one `HQ.register({...})` call:
+All lesson content lives in `js/data/part1.js` through `part6.js`. Each handbook is one `HQ.register({...})` call:
 
 ```js
 HQ.register({
@@ -114,11 +117,11 @@ css/style.css         all styling
 js/core.js            namespace, content registry, helpers
 js/state.js           XP, levels, streaks, badges, save/load
 js/app.js             screens, routing, quiz engine
-js/data/part1–5.js    all handbook content
+js/data/part1-6.js    all handbook content
 ```
 
 ---
 
 ## Source
 
-Built from *The Handbook Series* (13 handbooks, 166 pages). The PDFs remain the reference version — this is the drilling tool.
+Built from *The Handbook Series* (16 handbooks). The PDFs remain the reference version — this is the drilling tool.

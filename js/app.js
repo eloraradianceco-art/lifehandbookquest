@@ -586,7 +586,7 @@
 
   /* ---------------- boot ---------------- */
   HQ.books.sort(function (a, b) {
-    var order = ['Yourself', 'The Home', 'Machinery', 'Together', 'Protection'];
+    var order = ['Yourself', 'The Home', 'Machinery', 'Together', 'The World', 'Protection'];
     return order.indexOf(a.part) - order.indexOf(b.part);
   });
   render();
