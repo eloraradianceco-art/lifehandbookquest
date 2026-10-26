@@ -426,13 +426,50 @@
     });
     h += '</div>';
 
-    h += '<h2 class="part">Data</h2><div class="danger">' +
+    h += '<h2 class="part">Data</h2><div class="danger">';
+    if (!S.storageOk) {
+      h += '<div class="warnbox"><b>Progress is not being saved</b>' +
+        '<p>This browser is blocking local storage — most likely a private window. ' +
+        'Everything works, but it resets when you close the tab.</p></div>';
+    }
+    h += '' +
       '<button class="ghost" data-act="export">Copy backup code</button>' +
       '<button class="ghost" data-act="import">Restore from code</button>' +
       '<button class="ghost red" data-act="reset">Reset this player</button>' +
       '<p class="fine">Progress is stored in this browser only. Use the backup code to move it to another device.</p>' +
       '</div></div>';
     app.innerHTML = h;
+  }
+
+
+  /* ---------------- in-page dialog ---------------- */
+  function closeModal() {
+    var m = document.getElementById('modal');
+    if (m) m.remove();
+  }
+  HQ.closeModal = closeModal;
+
+  function modal(title, bodyHtml, buttons) {
+    closeModal();
+    var m = HQ.el('div', 'modal');
+    m.id = 'modal';
+    m.innerHTML =
+      '<div class="modal-card" role="dialog" aria-modal="true" aria-label="' + HQ.esc(title) + '">' +
+        '<h2>' + HQ.esc(title) + '</h2>' +
+        '<div class="modal-body">' + bodyHtml + '</div>' +
+        '<div class="modal-btns">' + buttons + '</div>' +
+      '</div>';
+    m.addEventListener('click', function (e) { if (e.target === m) closeModal(); });
+    document.body.appendChild(m);
+    var f = m.querySelector('textarea,button');
+    if (f) f.focus();
+  }
+
+  function toast(msg, bad) {
+    var t = HQ.el('div', 'toast' + (bad ? ' bad' : ''), HQ.esc(msg));
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add('out'); }, 2200);
+    setTimeout(function () { t.remove(); }, 2700);
   }
 
   /* ---------------- render ---------------- */
@@ -498,19 +535,53 @@
       render();
     }
     else if (a === 'export') {
-      var code = S.exportData();
-      navigator.clipboard && navigator.clipboard.writeText(code);
-      prompt('Backup code (copied). Paste this into "Restore" on another device:', code);
+      modal('Backup code',
+        '<p>This code holds the progress for both players. Copy it somewhere safe, ' +
+        'then paste it into Restore on the other device.</p>' +
+        '<textarea id="codeout" readonly rows="4">' + HQ.esc(S.exportData()) + '</textarea>',
+        '<button class="prim" data-act="copy-code">Copy code</button>' +
+        '<button class="ghost" data-act="close-modal">Done</button>');
+    }
+    else if (a === 'copy-code') {
+      var ta = document.getElementById('codeout');
+      ta.select(); ta.setSelectionRange(0, 99999);
+      var done = function () { toast('Code copied'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ta.value).then(done, function () {
+          toast('Selected — use Copy', true);
+        });
+      } else { toast('Selected — use Copy', true); }
     }
     else if (a === 'import') {
-      var inp = prompt('Paste your backup code:');
-      if (inp) { alert(S.importData(inp) ? 'Restored.' : 'That code did not work.'); render(); }
+      modal('Restore from a code',
+        '<p>Paste a backup code below. This replaces all progress on this device ' +
+        'for both players.</p>' +
+        '<textarea id="codein" rows="4" placeholder="Paste the code here"></textarea>',
+        '<button class="prim" data-act="do-import">Restore</button>' +
+        '<button class="ghost" data-act="close-modal">Cancel</button>');
+    }
+    else if (a === 'do-import') {
+      var val = document.getElementById('codein').value;
+      if (!val.trim()) { toast('Paste a code first', true); return; }
+      if (S.importData(val)) { closeModal(); render(); toast('Progress restored'); }
+      else { toast('That code did not work', true); }
     }
     else if (a === 'reset') {
-      if (confirm('Reset all progress for ' + S.profile().name + '? This cannot be undone.')) {
-        S.resetProfile(S.activeIndex()); render();
-      }
+      modal('Reset ' + S.profile().name + '?',
+        '<p>This erases every lesson, badge, streak and XP for this player. ' +
+        'It cannot be undone. The other player is not affected.</p>' +
+        '<p class="warn">Grab a backup code first if you are not sure.</p>',
+        '<button class="prim danger-btn" data-act="do-reset">Yes, reset</button>' +
+        '<button class="ghost" data-act="close-modal">Cancel</button>');
     }
+    else if (a === 'do-reset') {
+      S.resetProfile(S.activeIndex()); closeModal(); render(); toast('Progress reset');
+    }
+    else if (a === 'close-modal') closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
   });
 
   /* ---------------- boot ---------------- */

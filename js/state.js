@@ -36,8 +36,18 @@
   var S = {};
   HQ.S = S;
 
+  // Does this browser actually let us persist? (private windows refuse)
+  S.storageOk = (function () {
+    try {
+      localStorage.setItem('__hq_probe', '1');
+      localStorage.removeItem('__hq_probe');
+      return true;
+    } catch (e) { return false; }
+  })();
+
   S.save = function () {
-    try { localStorage.setItem(KEY, JSON.stringify(root)); } catch (e) {}
+    try { localStorage.setItem(KEY, JSON.stringify(root)); }
+    catch (e) { S.storageOk = false; }
   };
   S.root = function () { return root; };
   S.profiles = function () { return root.profiles; };
