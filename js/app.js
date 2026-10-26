@@ -30,7 +30,7 @@
   function header() {
     var lv = S.level(), p = S.profile(), st = S.liveStreak();
     return '' +
-      '<header class="hdr">' +
+      '<header class="hdr"><div class="hdr-in">' +
         '<button class="avatar" data-act="profile">' + p.avatar + '</button>' +
         '<div class="hdr-mid">' +
           '<div class="hdr-top">' +
@@ -41,7 +41,7 @@
           '<div class="xpbar"><div class="xpfill" style="width:' + lv.pct + '%"></div></div>' +
           '<div class="hdr-sub">' + lv.xp + ' XP' + (lv.next ? ' · ' + (lv.ceil - lv.xp) + ' to LV ' + lv.next.n : ' · MAX') + '</div>' +
         '</div>' +
-      '</header>';
+      '</div></header>';
   }
 
   /* ---------------- bottom nav ---------------- */
@@ -116,13 +116,17 @@
     var b = HQ.bookById[view.book];
     var pr = S.bookProgress(b.id);
     var h = '<div class="bhead" style="--c:' + b.color + '">' +
-      '<button class="back" data-act="home">‹</button>' +
-      '<div class="bh-icon">' + b.icon + '</div>' +
-      '<h1>' + HQ.esc(b.title) + '</h1>' +
-      '<p>' + HQ.esc(b.blurb) + '</p>' +
-      '<div class="bh-bar"><div style="width:' + pr.pct + '%"></div></div>' +
-      '<div class="bh-sub">' + pr.done + ' of ' + pr.total + ' complete</div>' +
-      '</div><div class="wrap"><div class="llist">';
+      '<div class="bh-mark" aria-hidden="true">' + b.icon + '</div>' +
+      '<div class="bh-in">' +
+        '<button class="back" data-act="home" aria-label="Back to map">‹</button>' +
+        '<div class="bh-icon">' + b.icon + '</div>' +
+        '<h1>' + HQ.esc(b.title) + '</h1>' +
+        '<p>' + HQ.esc(b.blurb) + '</p>' +
+        '<div class="bh-meta">' +
+          '<div class="bh-bar"><div style="width:' + pr.pct + '%"></div></div>' +
+          '<div class="bh-sub">' + pr.done + ' / ' + pr.total + '</div>' +
+        '</div>' +
+      '</div></div><div class="wrap"><div class="llist" style="--c:' + b.color + '">';
 
     b.lessons.forEach(function (l, i) {
       var rec = S.lesson(l.uid);
@@ -153,10 +157,10 @@
     var at = run.stage === 'teach' ? run.card : l.teach.length + run.qi;
     var pct = Math.round((at / total) * 100);
 
-    var h = '<div class="lhead" style="--c:' + b.color + '">' +
-      '<button class="x" data-act="quit">✕</button>' +
+    var h = '<div class="lhead" style="--c:' + b.color + '"><div class="lhead-in">' +
+      '<button class="x" data-act="quit" aria-label="Close lesson">✕</button>' +
       '<div class="lbar"><div style="width:' + pct + '%"></div></div>' +
-      '<span class="lcount">' + (at + 1) + '/' + total + '</span></div>';
+      '<span class="lcount">' + (at + 1) + '/' + total + '</span></div></div>';
 
     h += '<div class="wrap lwrap" style="--c:' + b.color + '">';
 
@@ -286,10 +290,10 @@
     var it = run.items[run.qi], q = it.q, order = run.order[run.qi];
     var pct = Math.round((run.qi / run.items.length) * 100);
     var b = HQ.bookById[it.l.bookId];
-    var h = '<div class="lhead" style="--c:' + b.color + '">' +
-      '<button class="x" data-act="quit">✕</button>' +
+    var h = '<div class="lhead" style="--c:' + b.color + '"><div class="lhead-in">' +
+      '<button class="x" data-act="quit" aria-label="Close">✕</button>' +
       '<div class="lbar"><div style="width:' + pct + '%"></div></div>' +
-      '<span class="lcount">' + (run.qi + 1) + '/' + run.items.length + '</span></div>';
+      '<span class="lcount">' + (run.qi + 1) + '/' + run.items.length + '</span></div></div>';
     h += '<div class="wrap lwrap" style="--c:' + b.color + '"><div class="qcard">' +
       '<div class="qkick">' + b.icon + ' ' + HQ.esc(b.title).toUpperCase() + '</div>' +
       '<h2>' + HQ.esc(q.q) + '</h2><div class="opts">';
