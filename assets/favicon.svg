@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Handbook Quest">
+  <title>Handbook Quest</title>
+  <defs>
+    <linearGradient id="fLight" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#F7D699"/>
+      <stop offset="1" stop-color="#D0982B"/>
+    </linearGradient>
+    <linearGradient id="fDark" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#BC8824"/>
+      <stop offset="1" stop-color="#815716"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="104" fill="#13202C"/>
+
+  <!-- intercardinal points -->
+  <path d="M256 92 Q278 234 420 256 Q278 278 256 420 Q234 278 92 256 Q234 234 256 92 Z"
+        fill="#3C6076" transform="rotate(45 256 256)"/>
+
+  <!-- cardinal points, drawn larger for legibility at 16px -->
+  <path d="M256 38 Q288 224 474 256 Q288 288 256 474 Q224 288 38 256 Q224 224 256 38 Z"
+        fill="url(#fLight)"/>
+  <path d="M256 38 Q224 224 38 256 Q224 288 256 474 Z"
+        fill="url(#fDark)"/>
+
+  <circle cx="256" cy="256" r="34" fill="#13202C"/>
+  <circle cx="256" cy="256" r="15" fill="#F7D699"/>
+</svg>

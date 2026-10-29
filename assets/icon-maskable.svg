@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Handbook Quest">
+  <title>Handbook Quest</title>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1D2D3C"/>
+      <stop offset="1" stop-color="#0B141C"/>
+    </linearGradient>
+    <linearGradient id="goldLight" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#F7D699"/>
+      <stop offset="1" stop-color="#D0982B"/>
+    </linearGradient>
+    <linearGradient id="goldDark" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#BC8824"/>
+      <stop offset="1" stop-color="#7E5514"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5C8EA6"/>
+      <stop offset="1" stop-color="#2A4657"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.62">
+      <stop offset="0" stop-color="#D0982B" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#D0982B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="#13202C"/>
+  <g transform="translate(256 256) scale(0.72) translate(-256 -256)">
+
+  <!-- tile -->
+  
+  <circle cx="256" cy="238" r="208" fill="url(#glow)"/>
+
+  <!-- bearing ring -->
+  <circle cx="256" cy="256" r="172" fill="none" stroke="#D0982B" stroke-opacity="0.32" stroke-width="5"/>
+
+  <!-- intercardinal points -->
+  <path d="M256 104 Q276 236 408 256 Q276 276 256 408 Q236 276 104 256 Q236 236 256 104 Z"
+        fill="url(#steel)" transform="rotate(45 256 256)"/>
+
+  <!-- cardinal points -->
+  <path d="M256 66 Q284 228 446 256 Q284 284 256 446 Q228 284 66 256 Q228 228 256 66 Z"
+        fill="url(#goldLight)"/>
+  <path d="M256 66 Q228 228 66 256 Q228 284 256 446 Z"
+        fill="url(#goldDark)"/>
+
+  <!-- hub -->
+  <circle cx="256" cy="256" r="31" fill="#0B141C"/>
+  <circle cx="256" cy="256" r="31" fill="none" stroke="#D0982B" stroke-width="7"/>
+  <circle cx="256" cy="256" r="11.5" fill="#F7D699"/>
+
+  <!-- the parts of the series -->
+  <circle cx="117" cy="117" r="13" fill="#6E8498"/>
+  <circle cx="395" cy="117" r="13" fill="#2FA39D"/>
+  <circle cx="395" cy="395" r="13" fill="#B87333"/>
+  <circle cx="117" cy="395" r="13" fill="#A34A6E"/>
+</g>
+</svg>
