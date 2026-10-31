@@ -1,6 +1,10 @@
-# Handbook Quest
+<p align="center">
+  <img src="assets/icon-rounded-512.png" width="132" alt="Handbook Quest">
+</p>
 
-A micro-learning game built from *The Handbook Series* — thirteen handbooks for starting an adult life, broken into short lessons with questions, XP, levels, streaks and badges.
+<h1 align="center">Handbook Quest</h1>
+
+A micro-learning game built from *The Handbook Series* — seventeen handbooks for starting an adult life, broken into short lessons with questions, XP, levels, streaks and badges.
 
 **17 handbooks · 104 lessons · 312 questions · ~2–3 minutes each**
 
