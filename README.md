@@ -1,12 +1,8 @@
-<p align="center">
-  <img src="assets/icon-rounded-512.png" width="132" alt="Handbook Quest">
-</p>
+# Handbook Quest
 
-<h1 align="center">Handbook Quest</h1>
+A micro-learning game built from *The Handbook Series* — thirteen handbooks for starting an adult life, broken into short lessons with questions, XP, levels, streaks and badges.
 
-A micro-learning game built from *The Handbook Series* — sixteen handbooks for starting an adult life, broken into short lessons with questions, XP, levels, streaks and badges.
-
-**16 handbooks · 94 lessons · 282 questions · ~2–3 minutes each**
+**17 handbooks · 104 lessons · 312 questions · ~2–3 minutes each**
 
 No build step. No dependencies. No accounts. Pure HTML, CSS and JavaScript — push it to GitHub and it runs.
 
@@ -57,7 +53,7 @@ Progress saves to the browser's local storage. The **You** tab has a backup code
 ## Contents
 
 **Part One — Yourself**
-`Strengths` · `Morning` · `Body`
+`Strengths` · `Morning` · `Body` · `Inside`
 
 **Part Two — The Home**
 `House` · `Kitchen`
@@ -78,7 +74,7 @@ Progress saves to the browser's local storage. The **You** tab has a backup code
 
 ## Editing the content
 
-All lesson content lives in `js/data/part1.js` through `part6.js`. Each handbook is one `HQ.register({...})` call:
+All lesson content lives in `js/data/part1.js` through `part7.js`. Each handbook is one `HQ.register({...})` call:
 
 ```js
 HQ.register({
@@ -121,11 +117,11 @@ css/style.css         all styling
 js/core.js            namespace, content registry, helpers
 js/state.js           XP, levels, streaks, badges, save/load
 js/app.js             screens, routing, quiz engine
-js/data/part1-6.js    all handbook content
+js/data/part1-7.js    all handbook content
 ```
 
 ---
 
 ## Source
 
-Built from *The Handbook Series* (16 handbooks). The PDFs remain the reference version — this is the drilling tool.
+Built from *The Handbook Series* (17 handbooks). The PDFs remain the reference version — this is the drilling tool.

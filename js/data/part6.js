@@ -156,6 +156,68 @@ HQ.register({
       ]
     },
     {
+      id: 'l7', title: 'How an Argument Is Built', time: 3,
+      teach: [
+        'Every argument is some number of <b>premises</b> leading to a <b>conclusion</b>. Written out, most arguments are far weaker than they sound spoken — because a premise was never stated and would not survive being said out loud.',
+        '"You should buy instead of renting, because renting is throwing money away." The unstated premises: that you will stay long enough to clear the transaction costs, and that taxes, interest and maintenance are smaller than you think. Those are the parts worth arguing about, and none of them were said.',
+        '<b>Valid</b> means the conclusion really follows from the premises. <b>Sound</b> means it is valid <i>and</i> the premises are true. These come apart constantly.'
+      ],
+      key: 'A true conclusion reached by broken reasoning will fail you next time.',
+      questions: [
+        { q: '"Everyone who lifts weights is strong. He lifts weights. So he is strong." What is wrong?',
+          a: ['The logic holds but the first premise is false, so the conclusion is unsupported', 'The logic does not hold', 'Nothing — it is a good argument', 'The conclusion is false'],
+          correct: 0, why: 'This is valid but not sound, and it is the most common failure in practice. Check the premises, not just the shape.' },
+        { q: '"Exercise is good for you. My uncle exercised and lived to 95. So exercise works." Assess it.',
+          a: ['The conclusion is true but the argument does not establish it', 'It is a sound argument', 'The conclusion is false', 'The premises are false'],
+          correct: 0, why: 'One case shows nothing. Agreeing with a conclusion is not the same as the reasoning being any good.' },
+        { q: 'Why does it matter if a true conclusion came from broken reasoning?',
+          a: ['The same method will point somewhere false next time', 'It does not matter if the answer is right', 'It makes you look careless', 'True conclusions are always suspect'],
+          correct: 0, why: 'People who only check whether they agree never notice their method is unreliable, because it keeps producing answers they like.' }
+      ]
+    },
+    {
+      id: 'l8', title: 'Three Ways to Reason', time: 3,
+      teach: [
+        '<b>Deduction</b> — general rule to specific case. If the premises are true the conclusion must be true. Gives certainty, but only as good as the starting rule.',
+        '<b>Induction</b> — specific cases to a general pattern. "Every car I owned needed brakes near 50,000 miles." Gives probability, never proof.',
+        '<b>Abduction</b> — an observation to the best available explanation. "The floor is wet and the pipe is dripping." This is what diagnosis is, and it is only as good as the alternatives you bothered to consider.',
+        'Most everyday reasoning is abduction wearing a deduction costume: you land on an explanation and then experience it as a fact.'
+      ],
+      key: 'Certainty is only available in deduction, and only when the starting rule is actually true.',
+      questions: [
+        { q: 'Your car makes a noise, you decide it is the alternator, and now you are sure. What kind of reasoning is that?',
+          a: ['Abduction — a hypothesis you are treating as a fact', 'Deduction', 'Induction', 'Valid deduction from a true rule'],
+          correct: 0, why: 'Naming it as a hypothesis restores the right confidence level. Force yourself to list a second and third explanation.' },
+        { q: 'What should you ask about an inductive argument?',
+          a: ['How many cases, how varied, and whether yours is typical', 'Whether the conclusion feels right', 'Who is making the argument', 'Whether it is logically valid'],
+          correct: 0, why: 'Three cases is a hunch. Three hundred across different conditions is a pattern.' },
+        { q: 'Someone expresses total certainty about a messy real-world question. What does that tell you?',
+          a: ['Something about them, not about the question', 'That they have strong evidence', 'That they have thought it through', 'That the question is simpler than it looks'],
+          correct: 0, why: 'Certainty is only available in deduction with a true starting rule. Most real questions are not that.' }
+      ]
+    },
+    {
+      id: 'l9', title: 'If-Then, and Where It Goes Wrong', time: 3,
+      teach: [
+        'Take "if it rained, the ground is wet." Two inferences are valid and two are invalid — and the invalid ones feel just as natural.',
+        '<b>Valid:</b> it rained, so the ground is wet. And: the ground is not wet, so it did not rain.',
+        '<b>Invalid:</b> the ground is wet, so it rained. A sprinkler, a burst pipe, a street cleaner — many things make ground wet. Also invalid: it did not rain, so the ground is not wet.',
+        'Real examples: "Scammers have bad grammar. This email has perfect grammar, so it is legitimate." Invalid, and expensive. The absence of one warning sign is not the presence of safety.'
+      ],
+      key: 'When someone argues from a result back to a cause, ask: what else could have produced this?',
+      questions: [
+        { q: '"Successful people wake at 5 a.m. I wake at 5 a.m., so I am on track." What is the error?',
+          a: ['Reasoning backwards from the result to the cause', 'The premise is false', 'It is a false dilemma', 'There is no error'],
+          correct: 0, why: 'Early rising may follow from the traits that produce success without producing them. The evidence runs the wrong direction.' },
+        { q: 'An email has perfect grammar, so it is not a scam. Why is that unsafe?',
+          a: ['The absence of one warning sign is not the presence of safety', 'Grammar is not checkable', 'Scammers always use good grammar now', 'It is actually sound reasoning'],
+          correct: 0, why: 'Denying the antecedent. Many legitimate-looking routes lead to the same place.' },
+        { q: 'Which question catches this error most reliably?',
+          a: ['What else could have produced this result?', 'Who benefits from this claim?', 'Is the source reputable?', 'What are the actual numbers?'],
+          correct: 0, why: 'It works on your own thinking as readily as on anyone else\'s.' }
+      ]
+    },
+    {
       id: 'l2', title: 'Numbers That Mislead', time: 3,
       teach: [
         'Most misleading claims are not lies. They are true numbers arranged to produce a false impression.',
